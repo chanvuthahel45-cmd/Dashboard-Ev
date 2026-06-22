@@ -76,7 +76,7 @@ def generate_mixed_scenario_evs(num_ev, weights=None):
     if weights is None:
         weights = {"Residential": 0.50, "Office": 0.30, "Public": 0.20}
 
-    # Validate weights sum to 1
+    # Validate weights sum to 1 for verify it 100% or not 
     assert abs(sum(weights.values()) - 1.0) < 0.01, "Weights must sum to 1"
 
     # Calculate number of EVs per scenario
@@ -135,9 +135,9 @@ st.set_page_config(page_title="EV Load Simulator", page_icon="⚡", layout="wide
 st.title("⚡ EV Load Impact Simulator")
 st.caption("Monte Carlo Simulation | EV Charging Impact on Power Grid")
 
-# ==================================================
+# ===============
 # SIDEBAR - Clean & Simple
-# ==================================================
+# ===============
 
 with st.sidebar:
     st.header("⚙️ Settings")
@@ -480,8 +480,7 @@ if run:
         })
         st.dataframe(sample_df, hide_index=True, use_container_width=True)
 
-    # ==============================================
-    # EXPORT
+    # EXPORT data as file 
     # ==============================================
 
     st.divider()
@@ -524,8 +523,6 @@ if run:
 
 else:
     # Welcome screen
-    st.info("👈 **Configure settings** in the sidebar and click **Run Simulation**")
-
     # Show scenario comparison
     st.subheader("📊 Scenario Comparison")
 
